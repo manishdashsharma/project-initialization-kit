@@ -8,8 +8,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
+# Install Vite globally
+RUN npm install -g vite
 
 # Copy the rest of the code
 COPY . .

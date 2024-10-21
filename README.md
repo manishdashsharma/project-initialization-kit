@@ -1,68 +1,113 @@
-# DoWell Cubes
+# Project Initialization Kit for MERN Stack
 
-## Getting Started with DoWellCubes 🛠️
+Welcome to the **Project Initialization Kit**, a streamlined setup template for quickly launching your MERN stack applications. This kit incorporates modern tools and practices, including Node.js, React, MongoDB, Docker, and more, enabling you to focus on development without the hassle of setup.
 
-### Prerequisites 📋
+## Features
 
-Before you start, make sure you have the following:
+- **Node.js & React.js**: Fully configured for both server and client-side development.
+- **MongoDB**: Pre-configured database setup.
+- **Docker & Docker Compose**: Simplified containerization and orchestration.
+- **ESLint**: Ensures code quality and consistency.
+- **Prettier**: Automatic code formatting for a clean codebase.
+- **Husky**: Git hooks to enforce code quality before commits and pushes.
+- **Commitlint**: Enforces conventional commit messages for a consistent commit history.
 
-- **Docker Installed:** DoWellCubes runs inside Docker containers, so ensure Docker is installed and running on your system. 🐳
-  - You can check if Docker is running by using this command:
-    ```bash
-    docker info
-    ```
+## Getting Started
 
-- **Docker Images:** Ensure you have the required Docker images for DoWellCubes available.
+Follow these steps to set up your project quickly:
 
-### Starting DoWellCubes 🚦
+### 1. Clone the Repository
 
-You can start DoWellCubes interactively based on what components you need to run. Here's how:
+Clone the template repository to your local machine:
 
-1. **Make the Startup Script Executable:**
+```bash
+git clone https://github.com/manishdashsharma/project-setup-starter.git <your-folder-name>
+```
 
-   First, give the `DoWellCubes.sh` script execute permissions:
+**Example:**
 
-   ```bash
-   chmod +x dowellcubes.sh
-   ```
+```bash
+git clone https://github.com/manishdashsharma/project-setup-starter.git myapp
+```
 
-2. **Run the Interactive Menu:**
+### 2. Create a Remote Repository
 
-   To run DoWellCubes interactively, simply execute the script:
+After cloning, create a new repository on your preferred Git hosting platform (e.g., GitHub, GitLab).
 
-   ```bash
-   ./dowellcubes.sh
-   ```
+### 3. Set Execution Permission for the Setup Script
 
-   You'll then be prompted to choose which services to run:
+Navigate to your project folder and grant execution permission for the setup script:
 
-   ```text
-   Please select the service you want to run:
-   1) All (This will remove all containers and images and start everything from scratch. NOTE: It will take time)
-   2) Server (Only start the server)
-   3) Client (Only start the client)
-   4) Server & Client (Start both server and client)
-   5) Exit
-   Enter your choice [1-5]:
-   ```
+```bash
+cd <your-folder-name>
+chmod +x setupservices.sh
+```
 
-3. **Choose an Option:**
+### 4. Run the Setup Script
 
-   - **Option 1:** Start **All** — This will clean up any existing DoWellCubes containers, images, and volumes, then build everything from scratch. (⚠️ This option will take time.)
-   - **Option 2:** Start **only the server**.
-   - **Option 3:** Start **only the client**.
-   - **Option 4:** Start **both the server and client** without cleanup.
-   - **Option 5:** **Exit** the script.
+Execute the setup script to automate project initialization:
 
-4. **Docker Commands:** If you want to manually start DoWellCubes without the script, you can run:
-   ```bash
-   docker-compose --env-file .env.development -f docker-compose.dev.yml up --build
-   ```
+```bash
+./setupservices.sh
+```
 
-### Docker Management Tips 📝
+This script will:
 
-- **Backup Data:** Before running any cleanup operation, ensure you backup critical data. 💾
-- **Check Logs for Errors:** If you face any issues during the setup or operation, you can check the Docker logs:
-  ```bash
-  docker logs <container_name>
-  ```
+- Remove the existing `.git` folder
+- Install project dependencies
+- Initialize Git and Husky
+- Install both server and client dependencies
+- Set up necessary script permissions
+
+### 5. Add Your Remote Repository
+
+After creating your remote repository, link it to your local project:
+
+```bash
+git branch -M main
+git remote add origin <your-remote-url>
+```
+
+Replace `<your-remote-url>` with the URL of your new repository.
+
+### 6. Create Environment Files
+
+Manually create the following environment files:
+
+- `.env.development`
+- `.env.production`
+
+Copy the content from `.env.example` into both files.
+
+### 7. Start Docker Client
+
+Ensure that Docker is running on your machine.
+
+### 8. Start the Server
+
+Launch the project by running:
+
+```bash
+./runservices.sh
+```
+
+### 9. Clean Up Docker Environment
+
+To remove all Docker containers, images, volumes, and builds related to the project, execute the cleanup script:
+
+```bash
+./removeservices.sh
+```
+
+**Note**: This will remove all Docker services and data associated with the project. Ensure that no other critical services are running in Docker before running this command.
+
+## Check Your Setup
+
+After completing the setup, verify everything is working:
+
+- **Backend**: [http://localhost:5000/api/v1/health](http://localhost:5000/api/v1/health)
+- **Frontend**: [http://localhost:5173](http://localhost:5173)
+
+## Contributing
+
+We welcome contributions to enhance this template! Please fork the repository and submit a pull request with your improvements.
